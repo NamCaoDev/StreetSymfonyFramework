@@ -1,0 +1,23 @@
+{
+    "name": "namcao/street-symfony-framework",
+    "description": "Street Symfony Framework for PHP Development",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nam Cao",
+            "email": "namcaodev@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "NamCao\\Framework\\": "src/"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "6.3.x-dev"
+    },
+    "require": {
+        "nikic/fast-route": "1.3.*"
+    }
+}
