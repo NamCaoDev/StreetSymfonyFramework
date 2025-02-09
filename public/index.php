@@ -1,8 +1,12 @@
 <?php declare(strict_types=1); // public/index.php
 
+use NamCao\Framework\Http\Request;
+
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
-dd('namdepzai');
+$request = Request::createFromGlobals();
+
+dd($request);
 
 // request received
 
