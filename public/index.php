@@ -1,16 +1,18 @@
 <?php declare(strict_types=1); // public/index.php
 
+use NamCao\Framework\Http\Kernel;
 use NamCao\Framework\Http\Request;
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
+// request received
 $request = Request::createFromGlobals();
 
-dd($request);
-
-// request received
-
 // perform some logic
+$kernel = new Kernel();
 
 // send response (string of content)
-echo 'Hello World';
+$response = $kernel->handle($request);
+
+
+$response->send();

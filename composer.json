@@ -16,6 +16,7 @@
         }
     },
     "require-dev": {
-        "symfony/var-dumper": "6.3.x-dev"
+        "symfony/var-dumper": "6.3.x-dev",
+        "nikic/fast-route": "1.3.*"
     }
 }
