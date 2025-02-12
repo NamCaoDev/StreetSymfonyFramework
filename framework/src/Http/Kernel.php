@@ -2,12 +2,11 @@
 
 namespace NamCao\Framework\Http;
 
-use NamCao\Framework\Routing\Router;
-
+use NamCao\Framework\Routing\RouterInterface;
 
 class Kernel {
 
-    public function __construct(private Router $router) {
+    public function __construct(private RouterInterface $router) {
        
     }
     public function handle(Request $request): Response 
