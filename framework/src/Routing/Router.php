@@ -7,25 +7,33 @@ use NamCao\Framework\Http\Request;
 use FastRoute\RouteCollector;
 use NamCao\Framework\Http\HttpRequestMethodException;
 use NamCao\Framework\Http\HttpException;
+use Psr\Container\ContainerInterface;
 
 use function FastRoute\simpleDispatcher;
 
 class Router implements RouterInterface {
-  public function dispatch(Request $request): array {
+
+  private $routes = [];
+  public function dispatch(Request $request, ContainerInterface $container): array {
     [$handler, $vars] = $this->extractRouteInfo($request); 
 
     if(is_array($handler)) {
-        [$controller, $method] = $handler;
+        [$controllerId, $method] = $handler;
+        $controller = $container->get($controllerId);
         $handler = [new $controller, $method];
     };
     
     return [$handler, $vars];
   }
 
-  public function extractRouteInfo(Request $request): array {
+  public function setRoutes(array $routes)
+  {
+    $this->routes = $routes;
+  }
+
+  private function extractRouteInfo(Request $request): array {
     $dispatcher = simpleDispatcher(function(RouteCollector $routeCollector) {
-        $routes = include BASE_PATH . '/routes/web.php';
-        foreach($routes as $route) {
+        foreach($this->routes as $route) {
             $routeCollector->addRoute(...$route);
         }
     });

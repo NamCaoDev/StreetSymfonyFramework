@@ -2,15 +2,12 @@
 
 use NamCao\Framework\Http\Kernel;
 use NamCao\Framework\Http\Request;
-use NamCao\Framework\Routing\Router;
 
 define('BASE_PATH', dirname(__DIR__));
 
 require_once BASE_PATH . '/vendor/autoload.php';
 
 $container = require BASE_PATH . '/config/services.php';
-
-
 
 // request received
 $request = Request::createFromGlobals();
