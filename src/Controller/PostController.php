@@ -2,13 +2,15 @@
 
 namespace App\Controller;
 
+use NamCao\Framework\Controller\AbstractController;
 use NamCao\Framework\Http\Response;
 
-class PostController {
+class PostController extends AbstractController {
     public function show(int $id): Response {
+        return $this->render('post.html.twig', ['postId' => "<script>alert('namdepzai)</script>"]);
+    }
 
-        $content = "<h1>This is post $id </h1>";
-        
-        return new Response($content);
+     public function create(): Response {
+        return $this->render('create-post.html.twig');
     }
 }

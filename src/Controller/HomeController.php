@@ -2,11 +2,15 @@
 
 namespace App\Controller;
 
+use NamCao\Framework\Controller\AbstractController;
 use NamCao\Framework\Http\Response;
 
-class HomeController {
+class HomeController extends AbstractController
+{
+   public function __construct()
+   {
+   }
    public function index(): Response {
-      $content = '<h1>Home Page</h1>';
-      return new Response($content);
+      return $this->render('home.html.twig');
    }
 }
